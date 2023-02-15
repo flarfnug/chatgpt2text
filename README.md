@@ -1,6 +1,6 @@
 # chatgpt2text
 
-Welcome to the ChatGPT quote generator for streamer.bot!
+Welcome to the ChatGPT/OpenAI quote generator for streamer.bot!
 This script outputs a text file to your default Download folder that streamer.bot can read.
 To use, simply upload this file to a PHP-capable web server,
 and create an action in streamer.bot with the "Network - Fetch URL" sub-action pointed at this file.
