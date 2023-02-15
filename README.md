@@ -9,3 +9,5 @@ Finally, you can print the variable in a Twitch/Youtube Chat Message action to d
 To make it easier for your viewers, create a command pointing at the action to retrieve a random quote.
 Customize to your preferences, but please note that I am not sure how secure this script is.
 It does not expose your API key simply by viewing the source, but please use at your own risk.
+
+You *must* edit cg.php and enter your OpenAI API key instead of the placeholder or this script will not work.
