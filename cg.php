@@ -10,7 +10,7 @@
 // Customize to your preferences, but please note that I am not sure how secure this script is.
 // It does not expose your API key simply by viewing the source, but please use at your own risk.
 
-// Array to hold the ChatGPT model settings
+// Array to hold the OpenAI model settings
 $data = array(
   'model' => 'text-davinci-001',
   'prompt' => 'Write a witty, intelligent, and funny quote.',
