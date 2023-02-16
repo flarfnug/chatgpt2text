@@ -18,11 +18,13 @@ Load index.php in your browser to change the prompt and display a response.
 
 Now with more interactivity, newly added dearai.php and the streamer.bot action/command to set the prompt from your Youtube live chat.
 point the subactions in the chatgpt-prompt action to the dearai.php script on your webserver, set the location of the local text file that streamer.bot writes the message out to and you're off to the races.  
-You will still be able to use the webpage to create a prompt also if you do not want to use this.
+You will still be able to use the webpage to create a prompt if you do not want to use this.
 
 Customize to your preferences, but please note that I am not sure how secure this script is.
 It does not expose your API key simply by viewing the source, but please use at your own risk.
 
+You *must* set the file permission for the php scripts and text files on your webserver for this to work correctly.
+
 You *must* edit generate-response.php and enter your [OpenAI API key](https://platform.openai.com/account/api-keys) instead of the placeholder or this script will not work. Or set an environment variable on your webserver with the API key in it.
 
-You *must* also edit the Fetch URL action to point at your URL.
+You *must* also edit the Fetch URL sub-action/s to point at your URL.
