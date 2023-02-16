@@ -3,6 +3,8 @@
 Welcome to the ChatGPT/OpenAI quote generator for streamer.bot!
 This script outputs a text file that streamer.bot can read.
 
+Now with the actions/command import code included. Copy/Paste the code into Import for the associated actions/command.
+
 To use, simply upload this folder to a PHP-capable web server,
 and create an action in streamer.bot with the "Network - Fetch URL" sub-action pointed at generate-response.php.
 
