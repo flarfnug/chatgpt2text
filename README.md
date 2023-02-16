@@ -16,6 +16,10 @@ To make it easier for your viewers, create a command pointing at the action to r
 
 Load index.php in your browser to change the prompt and display a response.
 
+Now with more interactivity, newly added dearai.php and the streamer.bot action/command to set the prompt from your Youtube live chat.
+point the subactions in the chatgpt-prompt action to the dearai.php script on your webserver, set the location of the local text file that streamer.bot writes the message out to and you're off to the races.  
+You will still be able to use the webpage to create a prompt also if you do not want to use this.
+
 Customize to your preferences, but please note that I am not sure how secure this script is.
 It does not expose your API key simply by viewing the source, but please use at your own risk.
 
