@@ -19,6 +19,6 @@ Load index.php in your browser to change the prompt and display a response.
 Customize to your preferences, but please note that I am not sure how secure this script is.
 It does not expose your API key simply by viewing the source, but please use at your own risk.
 
-You *must* edit generate-response.php and enter your [OpenAI API key](https://platform.openai.com/account/api-keys) instead of the placeholder or this script will not work.
+You *must* edit generate-response.php and enter your [OpenAI API key](https://platform.openai.com/account/api-keys) instead of the placeholder or this script will not work. Or set an environment variable on your webserver with the API key in it.
 
 You *must* also edit the Fetch URL action to point at your URL.
