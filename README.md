@@ -6,7 +6,7 @@ This script outputs a text file that streamer.bot can read.
 To use, simply upload this folder to a PHP-capable web server,
 and create an action in streamer.bot with the "Network - Fetch URL" sub-action pointed at generate-response.php.
 
-This will create the text file that you can read in using the "Read File" sub-action and assign to a variable of your choosing.
+This will create the text file that streamer.bot automatically reads into a variable.
 
 Finally, you can print the variable in a Twitch/Youtube Chat Message action to display a random quote based on your prompt below.
 
