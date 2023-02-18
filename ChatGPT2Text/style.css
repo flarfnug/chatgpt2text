@@ -1,13 +1,32 @@
 body {
-    background-color: #f1f1f1;
-    font-family: sans-serif;
-    margin: 0;
-    padding: 14;
+	background: linear-gradient(-45deg, #f0f33d, #e20926, #0080ff, #0cdb1d);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
 }
 
-h2 {
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+a {
+    color:#f1f1f1
+}
+
+h1 {
+    
     text-align: center;
     margin: 20px 0;
+    text-shadow: 2px 2px 5px gray;
+    font-family: "Lucida Console", "Courier New", monospace;
 }
 
 .box {
@@ -21,7 +40,7 @@ h2 {
     justify-content: center;
     align-items: center;
     max-width: 500px;
-    margin: 5;
+    
 }
 
 .box img {
@@ -29,6 +48,28 @@ h2 {
     max-height: 100%;
     padding: 0;
 }
+
+.buttons-box {
+	display: flex;
+	justify-content: center;
+	margin: 20px;
+}
+
+.button {
+	background-color: #0080ff;
+	border: none;
+	color: white;
+	padding: 10px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+
 
 form {
     background-color: #fff;
@@ -78,4 +119,19 @@ form input[type="submit"]:hover {
     margin: 10px auto;
     max-width: 500px;
     text-align: center;
+}
+
+.prompt {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 10px auto;
+    text-align: center;
+    
+    justify-content: center;
+    align-items: center;
+    max-width: 500px;
+    max-height: 200px;
+    overflow: auto;
 }
