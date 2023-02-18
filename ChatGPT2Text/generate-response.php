@@ -1,6 +1,7 @@
 <?php
 
 // Define your API key
+// *IMPORTANT* You must enter your OpenAI API key here.
 define('OPENAI_API_KEY', 'pleasetypeyourAPIkeyorthisallwontwork');
 
 // Sanitize input
@@ -37,7 +38,6 @@ $data = array(
 );
 
 // Form the API call for the curl request. 
-// *IMPORTANT*: You must enter your OpenAI API key here.
 $ch = curl_init('https://api.openai.com/v1/completions');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_POST, true);
