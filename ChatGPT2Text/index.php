@@ -28,24 +28,27 @@
 
 <script>
   const form = document.querySelector('form');
-  const responseContainer = document.getElementById('response-container');
+const promptContainer = document.getElementById('prompt-container');
+const responseContainer = document.getElementById('response-container');
 
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const formData = new FormData(form);
-    const xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = () => {
-      if (xhr.readyState === XMLHttpRequest.DONE) {
-        if (xhr.status === 200) {
-          responseContainer.innerHTML = `<h2>Response:</h2><p>${xhr.responseText}</p>`;
-        } else {
-          console.error('Failed to load response:', xhr.status, xhr.statusText);
-        }
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const formData = new FormData(form);
+  promptContainer.innerHTML = `<h1>AI Prompt:</h1><p>${formData.get('prompt') || "<?php echo file_get_contents('prompt.txt') ?>"}</p>`;
+  const xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = () => {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        responseContainer.innerHTML = `<h1>AI Response:</h1><p>${xhr.responseText}</p>`;
+        promptContainer.innerHTML = `<h1>AI Prompt:</h1><p>${formData.get('prompt') || "<?php echo file_get_contents('prompt.txt') ?>"}</p>`;
+      } else {
+        console.error('Failed to load response:', xhr.status, xhr.statusText);
       }
-    };
-    xhr.open('POST', 'generate-response.php');
-    xhr.send(formData);
-  });
+    }
+  };
+  xhr.open('POST', 'generate-response.php');
+  xhr.send(formData);
+});
 </script>
 
 
