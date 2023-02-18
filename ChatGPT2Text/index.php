@@ -10,21 +10,38 @@
 	</div>
 
 	<form action="generate-response.php" method="post">
-		<label for="prompt"><h2>Enter your prompt here:</h2></label>
+		<label for="prompt"><h1>Enter your prompt here:</h1></label>
 		<input type="text" id="prompt" name="prompt">
 
 		<input type="submit" value="Generate Response">
 	</form>
 
-	<div class="response" id="response-container">
-  <h2>Response:</h2>
+  
+<div class="prompt" id="prompt-container">
+  <h1>AI Prompt:</h1>
   <p>
     <?php
-      $response = file_get_contents("gptresponse.txt");
-      echo $response;
+      $prompt = $_POST['prompt'] ?? '';
+      if (!$prompt) {
+        $prompt = file_get_contents("prompt.txt");
+      }
+      echo $prompt;
     ?>
   </p>
 </div>
+
+
+
+	<div class="response" id="response-container">
+  		<h1>AI Response:</h1>
+  		<p>
+    		<?php
+      			$response = file_get_contents("gptresponse.txt");
+      			echo $response;
+    		?>
+  		</p>
+  		
+	</div>
 
 <script>
   const form = document.querySelector('form');
