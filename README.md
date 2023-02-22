@@ -10,7 +10,7 @@ and create an action in streamer.bot with the "Network - Fetch URL" sub-action p
 
 This will create the text file that Streamer.bot automatically reads into a variable.
 
-Finally, you can print the variable in a Twitch/Youtube Chat Message action to display a random quote based on your prompt.
+Print the variable in a Twitch/Youtube Chat Message action to display a random quote based on your prompt.
 
 To make it easier for your viewers, create a command pointing at the action to retrieve a random quote.
 
