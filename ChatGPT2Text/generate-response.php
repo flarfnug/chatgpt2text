@@ -1,8 +1,6 @@
 <?php
 
-// Define your API key
-// *IMPORTANT* You must enter your OpenAI API key here.
-define('OPENAI_API_KEY', 'pleasetypeyourAPIkeyorthisallwontwork');
+define('OPENAI_API_KEY', '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');  // Replace with your actual API key
 
 // Sanitize input
 $prompt = isset($_POST['prompt']) ? filter_input(INPUT_POST, 'prompt', FILTER_SANITIZE_STRING) : '';
@@ -13,39 +11,27 @@ if (empty($prompt)) {
   file_put_contents('prompt.txt', $prompt);
 }
 
-// Validate the API key (replace $OPENAI_API_KEY$ with your actual API key)
-if (!defined('OPENAI_API_KEY')) {
-  define('OPENAI_API_KEY', '$OPENAI_API_KEY$');
-}
-
-// Set access controls
-$allowed_ips = ['127.0.0.1']; // Example: allow only localhost
-$remote_ip = $_SERVER['REMOTE_ADDR'];
-if (!in_array($remote_ip, $allowed_ips)) {
-  http_response_code(403);
-  exit('Access denied');
-}
+// Set the messages for the conversation
+$messages = [
+  ['role' => 'system', 'content' => 'You are a helpful assistant that keeps responses short.'],
+  ['role' => 'user', 'content' => $prompt]
+];
 
 // Array to configure the model
-$data = array(
-  'model' => 'text-davinci-001',
-  'prompt' => $prompt,
-  'temperature' => 0.8,
-  'max_tokens' => 64,
-  'top_p' => 1,
-  'frequency_penalty' => 0,
-  'presence_penalty' => 0
-);
+$data = [
+  'model' => 'gpt-3.5-turbo',
+  'messages' => $messages
+];
 
-// Form the API call for the curl request. 
-$ch = curl_init('https://api.openai.com/v1/completions');
+// Form the API call for the curl request
+$ch = curl_init('https://api.openai.com/v1/chat/completions');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_POST, true);
 curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
-curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
   'Content-Type: application/json',
   'Authorization: Bearer ' . OPENAI_API_KEY
-));
+]);
 
 // Execute the curl request
 $response = curl_exec($ch);
@@ -57,11 +43,15 @@ curl_close($ch);
 
 // Validate response
 $json = json_decode($response, true);
-if (!$json || !isset($json['choices']) || !isset($json['choices'][0]) || !isset($json['choices'][0]['text'])) {
+if (!$json || !isset($json['choices'][0]['message']['content'])) {
   http_response_code(500);
   exit('Invalid response from OpenAI API');
 }
-$text = $json['choices'][0]['text'];
+
+// Save the generated text to a file
+$textResponse = $json['choices'][0]['message']['content'];
+$text = substr($textResponse, 0, 189);
+$text .= ' '; 
 
 // Save the generated text to a file
 file_put_contents('gptresponse.txt', $text);
@@ -70,7 +60,5 @@ file_put_contents('gptresponse.txt', $text);
 header('Content-Type: text/plain');
 header('Content-Disposition: attachment; filename="gptresponse.txt"');
 header('Content-Length: ' . filesize('gptresponse.txt'));
-$fp = fopen('gptresponse.txt', 'rb');
-fpassthru($fp);
-fclose($fp);
+readfile('gptresponse.txt');
 ?>
