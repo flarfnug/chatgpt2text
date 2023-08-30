@@ -1,6 +1,6 @@
 <?php
 
-define('OPENAI_API_KEY', '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');  // Replace with your actual API key
+define('OPENAI_API_KEY', 'YOURAPIKEYHERE');  // Replace with your actual API key
 
 // Sanitize input
 $prompt = isset($_POST['prompt']) ? filter_input(INPUT_POST, 'prompt', FILTER_SANITIZE_STRING) : '';
